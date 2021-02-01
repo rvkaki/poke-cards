@@ -1,0 +1,43 @@
+.Info {
+  height: 90%;
+  font-size: 1.4rem;
+  background-color: #ddd;
+  margin: auto 48px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 8px;
+}
+
+.Info-ability .title {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.Info-ability .text {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.Info-ability {
+  margin-bottom: 2.4rem;
+}
+
+.Info-attributes {
+  height: 80px;
+  margin: 24px 0px 24px 0px;
+}
+
+.Info-set {
+  justify-content: space-between;
+  font-size: 1.2rem;
+  color: #333
+}
+
+@media screen and (max-width: 1024px) {
+  .Info {
+    margin: auto;
+    margin-top: 48px;
+  }
+}

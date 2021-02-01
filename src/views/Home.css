@@ -1,0 +1,108 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+}
+
+.Home-searchbar {
+  width: 60%;
+}
+
+.Home-searchbar input {
+  flex: 5;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+}
+
+.Home-searchbar input:focus {
+  border: 2px solid #333;
+}
+
+.Home-searchbar button {
+  flex: 1;
+  margin-left: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border: none;
+  background: #333;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 4px;
+}
+
+.Button {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.Home-searchbar button:hover {
+  cursor: pointer;
+}
+
+.Home-searchbar button:active {
+  background: #777;
+}
+
+.Home-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+  justify-content: center;
+}
+
+.Home-card {
+  flex: 1;
+  max-width: 18%;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.Home-card:hover {
+  transform: scale(1.05);
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .Home-card {
+    max-width: 30%;
+    margin: 8px;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Home-card {
+    margin: auto;
+  }
+
+  .Home-searchbar {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .Home-searchbar input {
+    padding: 8px;
+  }
+
+  .Home-searchbar button {
+    padding: 8px;
+  }
+
+  .Button {
+    font-size: 1rem;
+  }
+}
