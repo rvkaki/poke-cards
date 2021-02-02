@@ -13,6 +13,17 @@ code {
     monospace;
 }
 
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (max-width: 1400px) {
   html {
     font-size: 80%;
