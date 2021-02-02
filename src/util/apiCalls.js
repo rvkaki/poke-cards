@@ -8,15 +8,17 @@ import { savePage, setLastPage } from "../store/actions/cards";
  */
 const splitLink = (text) => {
   let res = {};
-  const l = text.split(",");
+  if (text) {
+    const l = text.split(",");
 
-  l.forEach((x) => {
-    /* rel: rel=\"next\" */
-    const [link, rel] = x.split(";");
-    const page = parseInt(link.match(/page=(\d+)/)[1]);
-    const key = rel.match(/"(\w+)"/)[1];
-    res[key] = page;
-  });
+    l.forEach((x) => {
+      /* rel: rel=\"next\" */
+      const [link, rel] = x.split(";");
+      const page = parseInt(link.match(/page=(\d+)/)[1]);
+      const key = rel.match(/"(\w+)"/)[1];
+      res[key] = page;
+    });
+  }
 
   return res;
 };
@@ -43,6 +45,7 @@ export const getCards = async () => {
       } else return [];
     } catch (error) {
       console.error("Error: ", error);
+      return [];
     }
 };
 

@@ -22,7 +22,6 @@ const CardScreen = (props) => {
       getSet(card.setCode).then((data) => setSetTotal(data.set.totalCards));
   }, [card]);
 
-  console.log(card);
   if (!card) return null;
   return (
     <div className="CardScreen">
