@@ -1,0 +1,35 @@
+{
+  "card": {
+    "id": "xy6-28",
+    "name": "Natu",
+    "nationalPokedexNumber": 177,
+    "imageUrl": "https://images.pokemontcg.io/xy6/28.png",
+    "imageUrlHiRes": "https://images.pokemontcg.io/xy6/28_hires.png",
+    "types": ["Psychic"],
+    "supertype": "Pokémon",
+    "subtype": "Basic",
+    "ancientTrait": {
+      "name": "Δ Plus",
+      "text": "If your opponent's Pokémon is Knocked Out by damage from an attack of this Pokémon, take 1 more Prize card."
+    },
+    "hp": "40",
+    "retreatCost": ["Colorless"],
+    "convertedRetreatCost": 1,
+    "number": "28",
+    "artist": "Kagemaru Himeno",
+    "rarity": "Common",
+    "series": "XY",
+    "set": "Roaring Skies",
+    "setCode": "xy6",
+    "attacks": [
+      {
+        "cost": ["Psychic", "Colorless"],
+        "name": "Psywave",
+        "text": "This attack does 10 damage times the amount of Energy attached to your opponent's Active Pokémon.",
+        "damage": "10×",
+        "convertedEnergyCost": 2
+      }
+    ],
+    "weaknesses": [{ "type": "Psychic", "value": "×2" }]
+  }
+}

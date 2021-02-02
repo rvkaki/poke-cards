@@ -1,5 +1,5 @@
 import React from "react";
-import Attack from "./Attack";
+import Attack from "../components/Attack";
 import { render } from "@testing-library/react";
 
 test("Attack component renders the attack info", () => {

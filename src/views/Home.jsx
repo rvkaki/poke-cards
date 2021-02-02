@@ -1,43 +1,39 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 import SearchBar from "../components/SearchBar";
+import { setPageNumber, setSearchName } from "../store/actions/cards";
 import { getCards } from "../util/apiCalls";
 import { loadImages } from "../util/preloader";
 import "./Home.css";
 
-const splitLink = (text) => {
-  let res = {};
-  const l = text.split(",");
-
-  l.forEach((x) => {
-    /* rel: rel=\"next\" */
-    const [link, rel] = x.split(";");
-    const page = parseInt(link.match(/page=(\d+)/)[1]);
-    const key = rel.match(/"(\w+)"/)[1];
-    res[key] = page;
-  });
-
-  return res;
-};
-
 const Home = (props) => {
+  const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.currentPage);
+  const lastPage = useSelector((state) => state.lastPage);
+  const searchName = useSelector((state) => state.searchName);
+
   const [cards, setCards] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [value, setValue] = useState(searchName);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const firstPage = 1;
-  const [lastPage, setLastPage] = useState(1);
   const history = useHistory();
+
+  const setCurrentPage = (number) => {
+    dispatch(setPageNumber(number));
+  };
+
+  const setSearchTerm = (name) => {
+    dispatch(setSearchName(name));
+  };
 
   useEffect(() => {
     setLoading(true);
-    getCards(searchTerm, currentPage).then((data) => {
-      loadImages(data.cards.map((c) => c.imageUrl)).then(() => {
-        setCards(data.cards);
-        let l = splitLink(data.link);
-        setLastPage(l.last);
+    getCards().then((data) => {
+      loadImages(data.map((c) => c.imageUrl)).then(() => {
+        setCards(data);
         setLoading(false);
       });
     });
@@ -46,13 +42,11 @@ const Home = (props) => {
   const search = (e) => {
     e.preventDefault();
     setLoading(true);
-    if (searchTerm !== "") setCurrentPage(1);
-    getCards(searchTerm, currentPage).then((data) => {
-      loadImages(data.cards.map((c) => c.imageUrl)).then(() => {
-        setCards(data.cards);
-        let l = splitLink(data.link);
-        if (l.last) setLastPage(l.last);
-        else setLastPage(1);
+    setSearchTerm(value);
+    setCurrentPage(1);
+    getCards().then((data) => {
+      loadImages(data.map((c) => c.imageUrl)).then(() => {
+        setCards(data);
         setLoading(false);
       });
     });
@@ -81,8 +75,8 @@ const Home = (props) => {
         <SearchBar
           className="horizontal Home-searchbar"
           onClick={search}
-          value={searchTerm}
-          onChange={setSearchTerm}
+          value={value}
+          onChange={setValue}
         />
         <p
           className="Button"
